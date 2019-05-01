@@ -16,22 +16,8 @@ const defaultInitialValues = {
 };
 
 class ContactScreen extends Component {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.getParam("id") ? "Edit" : "Create"
-    };
-  };
-
-  getInitialValues = () => {
-    const { navigation, getContactById } = this.props;
-    const id = navigation.getParam("id");
-    return id ? getContactById(id) || defaultInitialValues : defaultInitialValues;
-  };
-
   handleSaveContact = contact => {
-    const { navigation, saveContact } = this.props;
-    saveContact(contact);
-    navigation.navigate("Home");
+    console.log("handleSaveContact: ", contact);
   };
 
   render() {
@@ -40,7 +26,7 @@ class ContactScreen extends Component {
     ) : (
       <View style={styles.container}>
         <Form
-          initialValues={this.getInitialValues()}
+          initialValues={defaultInitialValues}
           onSubmit={this.handleSaveContact}
           render={({ handleSubmit, invalid, pristine, form, submitting }) => (
             <View style={styles.container}>

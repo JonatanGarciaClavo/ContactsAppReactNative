@@ -24,11 +24,11 @@ class HomeScreen extends React.Component {
   }
 
   handleContactClick = id => {
-    this.props.navigation.push("Contact", { id });
+    console.log("handleContactClick: ", id);
   };
 
   handleDeleteClick = id => {
-    this.props.deleteContact(id);
+    console.log("handleDeleteClick: ", id);
   };
 
   render() {
