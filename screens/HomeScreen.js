@@ -19,22 +19,9 @@ class HomeScreen extends React.Component {
     title: "Home"
   };
 
-  componentDidMount() {
-    this.props.fetchContacts();
-  }
-
-  handleContactClick = id => {
-    this.props.navigation.push("Contact", { id });
-  };
-
-  handleDeleteClick = id => {
-    this.props.deleteContact(id);
-  };
-
   render() {
-    const { isLoading, getContacts } = this.props;
+    const { isLoading } = this.props;
     const { isListMode } = this.state;
-    const contacts = getContacts();
     return (
       <View style={styles.container}>
         <SwitchList
@@ -45,21 +32,7 @@ class HomeScreen extends React.Component {
             });
           }}
         />
-        {isLoading ? (
-          <Loader />
-        ) : isListMode ? (
-          <ContactList
-            contacts={contacts}
-            onContactClick={this.handleContactClick}
-            onDeleteClick={this.handleDeleteClick}
-          />
-        ) : (
-          <ContactCardList
-            contacts={contacts}
-            onContactClick={this.handleContactClick}
-            onDeleteClick={this.handleDeleteClick}
-          />
-        )}
+        {isLoading ? <Loader /> : isListMode ? <ContactList /> : <ContactCardList />}
       </View>
     );
   }

@@ -1,18 +1,9 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
 
-import ContactListItem from "./ContactListItem";
-
-const ContactList = ({ contacts, onContactClick, onDeleteClick }) => (
+const ContactList = () => (
   <ScrollView style={styles.container}>
-    {contacts.map(contact => (
-      <ContactListItem
-        key={contact.id}
-        onClick={onContactClick}
-        onDeleteClick={onDeleteClick}
-        {...contact}
-      />
-    ))}
+    <Text>ContactList</Text>
   </ScrollView>
 );
 
