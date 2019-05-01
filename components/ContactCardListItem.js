@@ -1,15 +1,19 @@
 import React from "react";
 import { Image, StyleSheet, Text, Dimensions, View, TouchableOpacity } from "react-native";
+import DeleteIcon from "./DeleteIcon";
 
 const { width } = Dimensions.get("window");
 
-const ContactCardListItem = ({ id, imgUrl, name, email, onClick }) => (
+const ContactCardListItem = ({ id, imgUrl, name, email, onClick, onDeleteClick }) => (
   <TouchableOpacity
     onPress={() => {
       onClick(id);
     }}
   >
     <View style={styles.cardContainer}>
+      <View style={styles.deleteIconContainer}>
+        <DeleteIcon onPress={() => onDeleteClick(id)} />
+      </View>
       <View style={styles.cardImgContainer}>
         <Image
           source={imgUrl ? { uri: imgUrl } : require("../assets/images/robot-prod.png")}
@@ -31,6 +35,10 @@ const styles = StyleSheet.create({
     margin: 8,
     borderWidth: 1,
     borderRadius: 20
+  },
+  deleteIconContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
   },
   cardImgContainer: {
     alignItems: "center"

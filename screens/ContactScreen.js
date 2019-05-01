@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import { View, StyleSheet, Button } from "react-native";
 import { Form, Field } from "react-final-form";
 
+import WithContacts from "../hoc/WithContacts";
+
+import Loader from "../components/Loader";
 import FormTextField from "../components/FormTextField";
 import { composeValidators, isRequired, isEmail, isUrl } from "../utils/validators";
-import WithContacts from "../hoc/WithContacts";
+import Colors from "../constants/Colors";
 
 const defaultInitialValues = {
   name: "",
@@ -19,19 +22,26 @@ class ContactScreen extends Component {
     };
   };
 
+  getInitialValues = () => {
+    const { navigation, getContactById } = this.props;
+    const id = navigation.getParam("id");
+    return id ? getContactById(id) || defaultInitialValues : defaultInitialValues;
+  };
+
+  handleSaveContact = contact => {
+    const { navigation, saveContact } = this.props;
+    saveContact(contact);
+    navigation.navigate("Home");
+  };
+
   render() {
-    const id = this.props.navigation.getParam("id");
-    const initialValues = id
-      ? this.props.getContactById(id) || defaultInitialValues
-      : defaultInitialValues;
-    return (
+    return this.props.isLoading ? (
+      <Loader />
+    ) : (
       <View style={styles.container}>
         <Form
-          initialValues={initialValues}
-          onSubmit={contact => {
-            this.props.saveContact(contact);
-            this.props.navigation.navigate("Home");
-          }}
+          initialValues={this.getInitialValues()}
+          onSubmit={this.handleSaveContact}
           render={({ handleSubmit, invalid, pristine, form, submitting }) => (
             <View style={styles.container}>
               <Field
@@ -44,26 +54,36 @@ class ContactScreen extends Component {
               <Field
                 name="email"
                 textContentType="emailAddress"
+                keyboardType="email-address"
                 component={FormTextField}
                 label="Email"
                 placeholder="email"
                 validate={composeValidators(isRequired, isEmail)}
+                autoCapitalize="none"
               />
               <Field
                 name="imgUrl"
                 textContentType="URL"
+                keyboardType="url"
                 component={FormTextField}
                 label="Image url"
                 placeholder="image url"
                 validate={isUrl}
+                autoCapitalize="none"
               />
               <View style={styles.buttonsContainer}>
                 <Button
+                  color={Colors.success}
                   disabled={submitting || invalid || pristine}
                   onPress={handleSubmit}
                   title="Save"
                 />
-                <Button disabled={submitting || pristine} onPress={form.reset} title="Reset" />
+                <Button
+                  color={Colors.error}
+                  disabled={submitting || pristine}
+                  onPress={form.reset}
+                  title="Reset"
+                />
               </View>
             </View>
           )}

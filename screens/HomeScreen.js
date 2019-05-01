@@ -1,11 +1,12 @@
 import React from "react";
-import { StyleSheet, View, Switch } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import WithContacts from "../hoc/WithContacts";
 
 import Loader from "../components/Loader";
 import ContactList from "../components/ContactList";
 import ContactCardList from "../components/ContactCardList";
+import SwitchList from "../components/SwitchList";
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -36,9 +37,9 @@ class HomeScreen extends React.Component {
     const contacts = getContacts();
     return (
       <View style={styles.container}>
-        <Switch
-          value={isListMode}
-          onValueChange={newIsListMode => {
+        <SwitchList
+          isSelected={isListMode}
+          onToggle={newIsListMode => {
             this.setState({
               isListMode: newIsListMode
             });

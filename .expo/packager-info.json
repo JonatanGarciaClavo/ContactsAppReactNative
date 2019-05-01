@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 4133,
+  "expoServerNgrokUrl": "https://f2-puy.anonymous.contactsappreactnative.exp.direct",
+  "packagerNgrokUrl": "https://packager.f2-puy.anonymous.contactsappreactnative.exp.direct",
+  "ngrokPid": 4149
 }

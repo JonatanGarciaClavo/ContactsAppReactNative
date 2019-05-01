@@ -1,6 +1,5 @@
 import React from "react";
 
-// import { contacts } from "../constants/contacts";
 import {
   updateContactService,
   postContactService,
@@ -52,7 +51,7 @@ class ContactsProvider extends React.Component {
           contacts: {
             ...this.state.contacts,
             data: {
-              ...this.state.data,
+              ...this.state.contacts.data,
               [updatedContact.id]: {
                 ...updatedContact
               }

@@ -6,6 +6,12 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import ContactScreen from "../screens/ContactScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import Colors from "../constants/Colors";
+
+const tabBarOptions = {
+  activeTintColor: Colors.tabLabelActive,
+  inactiveTintColor: Colors.tabLabelInactive
+};
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -16,7 +22,8 @@ HomeStack.navigationOptions = {
   tabBarLabel: "Home",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === "ios" ? `ios-list` : "md-list"} />
-  )
+  ),
+  tabBarOptions
 };
 
 const ContactStack = createStackNavigator({
@@ -27,7 +34,8 @@ ContactStack.navigationOptions = {
   tabBarLabel: "Add contact",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === "ios" ? "ios-contact" : "md-contact"} />
-  )
+  ),
+  tabBarOptions
 };
 
 const SettingsStack = createStackNavigator({
@@ -38,7 +46,8 @@ SettingsStack.navigationOptions = {
   tabBarLabel: "Settings",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === "ios" ? "ios-options" : "md-options"} />
-  )
+  ),
+  tabBarOptions
 };
 
 export default createBottomTabNavigator({
