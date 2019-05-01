@@ -99,21 +99,21 @@ class ContactsProvider extends React.Component {
       });
     });
   };
-  // handleDeleteContact = id => {
-  //   this.setState({
-  //     isLoading: true
-  //   });
-  //   deleteContactService(id).then(contact => {
-  //     const { [contact.id]: _, ...others } = this.state.contacts.data;
-  //     this.setState({
-  //       isLoading: false,
-  //       contacts: {
-  //         ids: this.state.contacts.ids.filter(id => id !== contact.id),
-  //         data: { ...others }
-  //       }
-  //     });
-  //   });
-  // };
+  handleDeleteContact = id => {
+    this.setState({
+      isLoading: true
+    });
+    deleteContactService(id).then(contact => {
+      const { [contact.id]: _, ...others } = this.state.contacts.data;
+      this.setState({
+        isLoading: false,
+        contacts: {
+          ids: this.state.contacts.ids.filter(id => id !== contact.id),
+          data: { ...others }
+        }
+      });
+    });
+  };
   getContactById = id => this.state.contacts.data[id];
   getContacts = () => this.state.contacts.ids.map(id => this.state.contacts.data[id]);
   render() {

@@ -23,17 +23,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "io.sytac.contacts",
-      "config": {
-        "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.325128930003-6ipuaiduqn7fit6km2sktmu5cbtcpr74"
-        }
-      }
-    },
-    "android": {
-        "package": "io.sytac.contacts",
-        "googleServicesFile": "./google-services.json"
+      "supportsTablet": true
     }
   }
 }
