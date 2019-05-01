@@ -5,6 +5,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
+    "slides": "mdx-deck slides.mdx",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll"
   },
   "jest": {
@@ -22,7 +23,11 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
-    "jest-expo": "^32.0.0"
+    "jest-expo": "^32.0.0",
+    "mdx-deck": "^1.7.10",
+    "mdx-deck-code-surfer": "^0.5.3",
+    "raw-loader": "^0.5.1",
+    "styled-components": "^4.2.0"
   },
   "private": true
 }

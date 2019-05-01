@@ -1,6 +1,6 @@
 import firebase from "./index";
 
-const BASE_URL = "/test";
+const BASE_URL = "/jony";
 
 export function getContactsService() {
   const firebaseConnection = firebase.database().ref(`${BASE_URL}`);

@@ -1,0 +1,28 @@
+import React, { Component } from 'react'
+import { Image, StyleSheet } from 'react-native'
+
+class Images extends Component {
+  render() {
+    return (
+      <View>
+        <Image
+          style={styles.image}
+          source={{uri: 'http://www.backend.com/logo.png'}}
+        />
+        <Image
+          style={styles.image}
+          source={require("../assets/images/robot-prod.png")}
+        />
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  image: {
+    width: 200,
+    height: 200,
+  },
+})
+
+export default Images;
