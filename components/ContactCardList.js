@@ -1,9 +1,13 @@
 import React from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView } from "react-native";
 
-const ContactCardList = () => (
+import ContactCardItem from "./ContactCardItem";
+
+const ContactCardList = ({ contacts, ...others }) => (
   <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator>
-    <Text>ContactCardList</Text>
+    {contacts.map(contact => (
+      <ContactCardItem key={contact.id} contact={contact} {...others} />
+    ))}
   </ScrollView>
 );
 

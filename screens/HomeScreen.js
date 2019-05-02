@@ -8,6 +8,8 @@ import ContactList from "../components/ContactList";
 import ContactCardList from "../components/ContactCardList";
 import SwitchList from "../components/SwitchList";
 
+import { contacts } from "../constants/contacts";
+
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,13 @@ class HomeScreen extends React.Component {
   }
   static navigationOptions = {
     title: "Home"
+  };
+
+  handleContactClick = contact => {
+    console.log("handleContactClick: ", contact);
+  };
+  handleDeleteClick = contact => {
+    console.log("handleDeleteClick: ", contact);
   };
 
   render() {
@@ -32,7 +41,17 @@ class HomeScreen extends React.Component {
             });
           }}
         />
-        {isLoading ? <Loader /> : isListMode ? <ContactList /> : <ContactCardList />}
+        {isLoading ? (
+          <Loader />
+        ) : isListMode ? (
+          <ContactList />
+        ) : (
+          <ContactCardList
+            contacts={contacts}
+            onContactClick={this.handleContactClick}
+            onDeleteClick={this.handleDeleteClick}
+          />
+        )}
       </View>
     );
   }
